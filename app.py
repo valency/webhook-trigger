@@ -8,7 +8,7 @@ from wrenchbox.logging import setup_log
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=('GET', 'POST'))
 def root():
     s = subprocess.check_output(['git -C {} pull'.format(args.path)], shell=True)
     return s.decode('UTF-8')
